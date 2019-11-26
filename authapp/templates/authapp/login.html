@@ -1,0 +1,22 @@
+{% extends 'authapp/base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+    <form class="form-horizontal" method="post">
+        {% csrf_token %}
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}">
+        {% endif %}
+        {{ login_form.as_p }}
+        <br>
+        <input class="form-control" type="submit" value="Войти">
+    </form>
+    <a href="{% url 'auth:register' %}" class="btn">
+        Зарегистрироваться
+    </a>
+
+    <a href="{% url 'social:begin' 'google-oauth2' %}?next=/" class="btn">
+     Google+ sign in
+    </a>
+{% endblock %}
