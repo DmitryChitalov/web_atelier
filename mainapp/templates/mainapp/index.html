@@ -1,0 +1,22 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+	{{ block.super }} | {{ title }}
+{% endblock %}
+
+{% block container %}
+    <!--Создание шапки-меню-->
+    <div class="header">
+        {% include 'mainapp/includes/inc__main_menu.html' %}
+    </div>
+
+    <hr>
+    <h1>Индивидуальный пошив одежды</h1>
+    <div class="box_text">
+            <p>
+                Добрый день! <br> Меня зовут ххх ххх я дизайнер-модельер, разрабатывающий и отшивающий одежду на заказ. <br> Познакомиться с моими работами Вы можете в разделе каталог. <br> Мои контактные данные в разделе контакты. <br>
+            </p>
+    </div>
+    <hr id="end">
+{% endblock %}

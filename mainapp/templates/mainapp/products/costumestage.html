@@ -1,0 +1,40 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+{% block container %}
+    <!--Создание шапки-меню-->
+    <div class="header">
+        {% include 'mainapp/includes/inc__main_menu.html' %}
+    </div>
+
+    <hr>
+    <h1>Костюм сценический</h1>
+    <div class="content1">
+        <a href="{% static 'img/costumestage.jpg' %}" target="_blank">
+            <img src="{% static 'img/costumestage.jpg' %}"
+            alt="Костюм сценический"
+            title="Костюм сценический"
+            height="450">
+        </a>
+        <div class="box_text1">
+            <h2>Описание товара</h2>
+            <p class="product_description">
+                Платье для спортивных бальных танцев для стандартной программы. <br> Возростная категория Ю-1, Ю-2.
+            </p>
+            <h2>Характеристика товара</h2>
+            <ul class="product_characteristic">
+                <li>Рост 140 - 145 см</li>
+                <li>Основная ткань - бифлекс, масло</li>
+                <li>Ткань подъюбника - фатин</li>
+            </ul>
+            <h3>Подробное описание товара</h3>
+            <p class="detailed_product_description">
+                Платье с ассиметричным кроем, что позволяет выгодно подчеркнуть фигуру спортсмена. <br>
+                Сочетание розового и шоколадного цветов создает нежный и запоминающийся образ на паркете. <br>
+                За счет пышной юбки платье очень динамичное, оживает на паркете и привлекает внимание.
+            </p>
+            <a href="#">Заказать</a>
+        </div>
+    </div>
+    <hr id="end">
+{% endblock %}

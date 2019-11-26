@@ -1,0 +1,41 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+{% block container %}
+    <!--Создание шапки-меню-->
+    <div class="header">
+        {% include 'mainapp/includes/inc__main_menu.html' %}
+    </div>
+
+    <hr>
+    <h1>Платье для коктеля</h1>
+    <div class="content1">
+        <a href="{% static 'img/dress.jpg' %}" target="_blank">
+            <img src="{% static 'img/dress.jpg' %}"
+            alt="Платье для коктеля"
+            title="Платье для коктеля"
+            height="450">
+        </a>
+        <div class="box_text1">
+            <h2>Описание товара</h2>
+            <p class="product_description">
+                Платье приталенного силуэта с отрезной линией талии <br> и цветочным принтом
+            </p>
+            <h2>Характеристика товара</h2>
+            <ul class="product_characteristic">
+                <li>Размер 42 - 44 </li>
+                <li>Ткань - хлопок 100% </li>
+            </ul>
+            <h3>Подробное описание товара</h3>
+            <p class="detailed_product_description">
+                В этом платье можно пойти на вечеринку и уютно себя чувствовать на прогулке. <br>
+                Пышная юбка с подъюбником из фатина оборкой по подолу подчеркивает вашу талию <br> и стройность ног.
+                Фигурная линия горловины поволяет дополнить образ украшением. <br> Потойная молния в боковом шве
+                не привлекает внимание и обеспечивает комфорное ношение. <br> Цветочный принт платья создает
+                романтическое настроение.
+            </p>
+            <a href="#">Заказать</a>
+        </div>
+    </div>
+    <hr id="end">
+{% endblock %}

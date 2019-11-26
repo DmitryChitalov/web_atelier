@@ -1,0 +1,79 @@
+{% load staticfiles %}
+
+<a href="{% url 'index' %}">
+        <img src="{% static 'img/logo.jpg' %}"
+    alt="Логотип интернет-магазин"
+    title="Логотип интернет-магазин"
+    height="130">
+</a>
+<ul class="menu">
+    <li>
+        <a href="{% url 'index' %}"
+           class="{% if request.resolver_match.url_name == 'index' and not request.resolver_match.namespaces %}
+                        active
+                    {% endif %}">
+            Главная
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'main:index' %}"
+           class="{% if request.resolver_match.url_name == 'category' or request.resolver_match.url_name == 'index' and request.resolver_match.namespaces.0 == 'main' %}
+                        active
+                    {% endif %}">
+            Каталог
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'main:contact' %}"
+           class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+            Контакты
+        </a>
+    </li>
+    {% if user.is_authenticated %}
+    <li>
+        <div class="dropdown">
+           <a class="dropdown-toggle" href="" data-toggle="dropdown">
+               {{ user.first_name|default:'Пользователь' }}
+               <span class="caret"></span>
+           </a>
+           <ul class="dropdown-menu">
+               <li>
+                   <a href="{% url 'auth:edit' %}">
+                       профиль
+                   </a>
+               </li>
+               <li>
+                   <a href="{% url 'orders:index' %}">
+                       заказы
+                   </a>
+               </li>
+           </ul>
+       </div>
+    </li>
+    {% endif %}
+    <!--<li>-->
+        <!--{% if user.is_authenticated %}-->
+            <!--<a href="{% url 'auth:edit' %}">{{user.first_name|default:'Пользователь'}}</a>-->
+        <!--{% endif %}-->
+    <!--</li>-->
+    {% if user.is_superuser %}
+    <li>
+        <a href="{% url 'admin:index' %}">админка</a>
+    </li>
+    {% endif %}
+    <li>
+        {% if user.is_authenticated %}
+            <a href="{% url 'auth:logout' %}">Выход</a>
+        {% else %}
+            <a href="{% url 'auth:login' %}">Вход</a>
+        {% endif %}
+    </li>
+</ul>
+<a href="{% url 'basket:index' %}" class="basket">
+    {% if basket %}
+        <span>
+            {{ basket.0.total_cost|floatformat:0 }} руб
+            ({{ basket.0.total_quantity }} шт)
+        </span>
+    {% endif %}
+</a>

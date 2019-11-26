@@ -1,0 +1,43 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+	{{ block.super }} | {{ title }}
+{% endblock %}
+
+{% block container %}
+    <!--Создание шапки-меню-->
+    <div class="header">
+        {% include 'mainapp/includes/inc__main_menu.html' %}
+    </div>
+    <hr>
+    <div>
+        {% include 'mainapp/includes/inc__category_menu.html' %}
+    </div>
+    <hr>
+    <h1>{{ product.name }}</h1>
+    <div class="content1">
+        <a href="{{ product.image.url }}" target="_blank">
+            <img src="{{ product.image.url }}"
+            alt="{{ product.name }}"
+            title="{{ product.name }}"
+            height="450">
+        </a>
+        <div class="box_text1">
+            <h2>Описание товара</h2>
+            <p class="product_description">
+               {{ product.short_desc }}
+            </p>
+            <h2>Характеристика товара</h2>
+            <ul class="product_characteristic">
+                {{ product.characteristic }}
+            </ul>
+            <h3>Подробное описание товара</h3>
+            <p class="detailed_product_description">
+                {{ product.description }}
+            </p>
+            <a href="{% url 'basket:add' product.pk %}">Заказать</a>
+        </div>
+    </div>
+    <hr id="end">
+{% endblock %}

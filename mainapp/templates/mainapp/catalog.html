@@ -1,0 +1,54 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+	{{ block.super }} | {{ title }}
+{% endblock %}
+
+{% block container %}
+    <!--Создание шапки-меню-->
+    <div class="header">
+        {% include 'mainapp/includes/inc__main_menu.html' %}
+    </div>
+    <hr>
+    <div>
+        {% include 'mainapp/includes/inc__category_menu.html' %}
+    </div>
+    <hr>
+    <h1>Изготовленные заказы</h1>
+    <div class="paginator">
+        <!--{% if request.resolver_match.kwargs.category_pk == '0' %}-->
+            <!--<h2>Категория: "Все"</h2>-->
+        <!--{% else %}-->
+            <!--<h2>Категория: "{{ products.0.category.name|title }}"</h2>-->
+        <!--{% endif %}-->
+        {% if products.has_previous %}
+            <a href="{% url 'main:page' products.previous_page_number %}">
+              <
+            </a>
+            {% endif %}
+            <span class="current">
+            страница {{ products.number }} из {{ products.paginator.num_pages }}
+            </span>
+            {% if products.has_next %}
+            <a href="{% url 'main:page' products.next_page_number %}">
+              >
+            </a>
+        {% endif %}
+    </div>
+
+    <div class="prdcontent">
+        <div class="product">
+            {% for product in products %}
+                <a href="{% url 'main:product' product.pk %}">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}"
+                    title="{{ product.name }}" height="230">
+                    <br>
+                    {{ product.name }}
+                </a>
+            <br>
+            {% endfor %}
+        </div>
+    </div>
+    <hr id="end">
+{% endblock %}

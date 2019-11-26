@@ -1,0 +1,42 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+{% block container %}
+    <!--Создание шапки-меню-->
+    <div class="header">
+        {% include 'mainapp/includes/inc__main_menu.html' %}
+    </div>
+
+    <hr>
+    <h1>Костюмы для танцевальных коллективов</h1>
+    <div class="content2">
+        <a href="{% static 'img/costumedance.jpg' %}" target="_blank">
+            <img src="{% static 'img/costumedance.jpg' %}"
+            alt="Костюмы для танцевальных коллективов"
+            title="Костюмы для танцевальных коллективов"
+            width="480">
+        </a>
+        <div class="box_text1">
+            <h2>Описание товара</h2>
+            <p class="product_description">
+                Костюмы для танцевального коллектива
+            </p>
+            <h2>Характеристика товара</h2>
+            <ul class="product_characteristic">
+                <li>Размеры: 40 - 44</li>
+                <li>Основная ткань - габардин</li>
+                <li>Ткань подъюбника - фатин</li>
+            </ul>
+            <h3>Подробное описание товара</h3>
+            <p class="detailed_product_description">
+                Костюмы для танцевального коллектива представлены платьями <br> приталенного силуэта с
+                отрезной линией талии. <br> Юбка-солнце с пятью бантовыми складками. <br>
+                Платье дополнено съемными воротником и пышным подъюбником из фатина. <br>
+                Подол юбки и воротник украшены атласной лентой. <br>
+                Линия притачивания лифа и юбки декорирована атласным поясом.
+            </p>
+            <a href="#">Заказать</a>
+        </div>
+    </div>
+    <hr id="end">
+{% endblock %}
