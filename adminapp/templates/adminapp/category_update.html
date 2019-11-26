@@ -1,0 +1,16 @@
+{% extends 'adminapp/base.html' %}
+{% load staticfiles %}
+
+
+{% block container %}
+    <div class="new_category_form">
+        <form class="form-horizontal" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="form-control" type="submit" value="Сохранить">
+        </form>
+        <a href="{% url 'admin:categories' %}" class="btn btn-round form-control last">
+                К списку категорий
+        </a>
+    </div>
+{% endblock %}

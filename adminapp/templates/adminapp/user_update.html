@@ -1,0 +1,15 @@
+{% extends 'adminapp/base.html' %}
+{% load staticfiles %}
+
+
+{% block container %}
+    <div class="login">
+        <form class="form-horizontal" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <input class="form-control" type="submit" value="Сохранить">
+            <a href="{% url 'admin:index' %}" class="btn">Отмена</a>
+        </form>
+    </div>
+{% endblock %}
